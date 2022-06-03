@@ -109,8 +109,8 @@ class CartController extends Controller
             $order->save();
 
             setcookie("order", $order->id, time()+3600); 
-            Helpers::sendOrder($input);
-
+            $response = Helpers::sendOrder($input);
+            Helpers::setLocation($response);
             return redirect()->route('cart.list');
         }
         Session::flash('message', 'Método de pago inhabilitado'); 

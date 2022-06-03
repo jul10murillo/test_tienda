@@ -54,6 +54,11 @@ class Helpers{
             'body' => $json 
         ]);
         $data =(string) $response->getBody();
+        
+        return $data;
+    }
+
+    public static function setLocation($data){
         $data = json_decode($data);
         setcookie("requestId", $data->requestId, time()+3600); 
         header('Location: '.$data->processUrl);

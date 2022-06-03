@@ -17,6 +17,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->name,
             'price' => $this->faker->randomNumber(4),
             'slug' => $this->faker->slug,
+            'thumbnail' => "https://picsum.photos/200/300?grayscale",
             'description' => $this->faker->text,
         ];
     }

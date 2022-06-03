@@ -13,7 +13,7 @@ class Helpers{
     {
         $nonce = Str::random(16);
         $seed = date('Y-m-d\TH:i:sP');
-        $trankey = base64_encode(sha1($nonce.$seed.'024h1IlD', true));
+        $trankey = base64_encode(sha1($nonce.$seed.env('TRANKEY_EVERTEC'), true));
         $nonce = base64_encode($nonce);
         $seed = date('Y-m-d\TH:i:sP');
         $json = json_encode([
@@ -34,12 +34,12 @@ class Helpers{
                 "mobile" => $input['mobile'] 
             ], 
             'expiration'=>"2023-06-02T23:04:24-05:00",
-            'returnUrl'=>"http://localhost:8000/cart",
+            'returnUrl'=>env('URL_BACK'),
             'ipAddress'=>'201.185.219.95',
             'userAgent'=>'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36',
             'locale' => 'es_CO',
             'auth' => [
-                'login'   => '6dd490faf9cb87a9862245da41170ff2',
+                'login'   => env('LOGIN_EVERTEC'),
                 'tranKey' => $trankey,
                 'nonce'   => $nonce,
                 'seed'    => $seed
